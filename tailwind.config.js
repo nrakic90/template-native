@@ -8,6 +8,10 @@ module.exports = {
     presets: [require("nativewind/preset")],
     theme: {
         extend: {
+            colors: {
+                // All your theme colors are available directly
+                ...theme.colors,
+            },
             fontFamily: theme.typography.fontFamily,
             fontSize: theme.typography.fontSize,
             fontWeight: theme.typography.fontWeight,
