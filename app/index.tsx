@@ -1,8 +1,9 @@
 import "../global.css";
-import { Text, View, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
+import { observer } from "mobx-react-lite";
 import { useTheme } from "@/theme/hooks";
 
-export default function App() {
+const App = observer(() => {
     const { isDark, toggleTheme, themeMode } = useTheme();
 
     return (
@@ -60,4 +61,6 @@ export default function App() {
             </View>
         </View>
     );
-}
+});
+
+export default App;
