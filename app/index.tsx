@@ -1,6 +1,6 @@
 import "../global.css";
 import { Text, View, TouchableOpacity } from "react-native";
-import { useTheme } from "../theme/hooks";
+import { useTheme } from "@/theme/hooks";
 
 export default function App() {
     const { isDark, toggleTheme, themeMode } = useTheme();

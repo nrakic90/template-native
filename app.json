@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "remembrall-v2",
-    "slug": "remembrall-v2",
+    "name": "template-native",
+    "slug": "template-native",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",

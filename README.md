@@ -1,50 +1,113 @@
-# Welcome to your Expo app 👋
+# Template Native
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A modern React Native application built with Expo, featuring a comprehensive design system, MobX state management, and NativeWind styling.
 
-## Get started
+## Features
 
-1. Install dependencies
+- **Universal Platform Support**: Runs on iOS, Android, and Web
+- **Modern Tech Stack**: TypeScript, Expo Router, React Compiler
+- **Design System**: Complete theme system with design tokens and automatic dark/light mode
+- **NativeWind Styling**: Tailwind CSS for React Native with custom theme integration
+- **MobX State Management**: Reactive state management with separation of concerns
+- **File-based Routing**: Type-safe routing with Expo Router
 
+## Quick Start
+
+1. **Install dependencies**
    ```bash
    npm install
    ```
 
-2. Start the app
-
+2. **Start development server**
    ```bash
+   npm start
+   # or
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+3. **Run on specific platforms**
+   ```bash
+   npm run android    # Android emulator
+   npm run ios        # iOS simulator
+   npm run web        # Web browser
+   ```
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Architecture
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Theme System
+- **Design Tokens**: Comprehensive token system in `theme/` directory
+- **Theme Provider**: React context with system theme detection
+- **Dark Mode**: Automatic light/dark mode switching
+- **NativeWind Integration**: Theme tokens automatically available in Tailwind classes
 
-## Get a fresh project
+### State Management
+- **MobX Stores**: All state management handled by MobX stores
+- **Global Store**: `App.store.ts` for application-wide state
+- **Local Stores**: Component-specific stores with `.store.ts` extension
+- **UI Separation**: Components focus purely on UI, logic handled by stores
 
-When you're ready, run:
+### Styling Guidelines
+- **NativeWind Only**: All styling done through NativeWind (Tailwind CSS)
+- **Design Tokens**: Use semantic colors from theme system
+- **Cross-Platform**: Consistent styling across iOS, Android, and Web
 
-```bash
-npm run reset-project
+### Project Structure
+```
+app/                 # File-based routing
+├── _layout.tsx      # Root layout with providers
+├── index.tsx        # Home screen
+theme/               # Design system
+├── index.ts         # Main theme export
+├── hooks.tsx        # Theme provider & hooks
+├── colors.ts        # Color tokens
+├── typography.ts    # Typography tokens
+└── ...              # Other design tokens
+*.store.ts           # MobX stores
+components/          # Reusable components
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Development
 
-## Learn more
+### Available Scripts
+- `npm start` - Start development server
+- `npm run android` - Run on Android
+- `npm run ios` - Run on iOS
+- `npm run web` - Run on web
+- `npm run lint` - Run ESLint
+- `npm run reset-project` - Reset to blank project
 
-To learn more about developing your project with Expo, look at the following resources:
+### Creating Components
+1. Create UI components in `components/` directory
+2. Extract logic to corresponding `.store.ts` files
+3. Use MobX `observer` wrapper for reactive components
+4. Style exclusively with NativeWind classes
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### Theme Usage
+```tsx
+import { useTheme } from '@/theme/hooks';
 
-## Join the community
+export default function MyComponent() {
+  const { isDark, toggleTheme } = useTheme();
+  // Use theme in component
+}
+```
 
-Join our community of developers creating universal apps.
+## Configuration
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- **TypeScript**: Strict mode enabled with path aliases (`@/*`)
+- **Expo Config**: `app.json` with React Compiler and typed routes
+- **Tailwind**: `tailwind.config.js` extends custom theme tokens
+- **Platform Support**: Universal deployment for iOS, Android, Web
+
+## Experimental Features
+
+- **React Compiler**: Automatic React optimizations
+- **Typed Routes**: Compile-time route type checking
+- **New Architecture**: React Native's new architecture enabled
+
+## Resources
+
+- [Expo Documentation](https://docs.expo.dev/)
+- [NativeWind Documentation](https://www.nativewind.dev/)
+- [MobX Documentation](https://mobx.js.org/)
+- [Expo Router Documentation](https://docs.expo.dev/router/introduction/)
