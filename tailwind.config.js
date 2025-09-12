@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-const { theme, lightTheme, darkTheme } = require('./theme');
+const { theme } = require('./theme');
 
 module.exports = {
     // NOTE: Update this to include the paths to all files that contain Nativewind classes.
@@ -9,7 +9,6 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                // All your theme colors are available directly
                 ...theme.colors,
             },
             fontFamily: theme.typography.fontFamily,
