@@ -83,15 +83,51 @@ Comprehensive design token system located in `theme/` directory:
 - **Logic Extraction**: Extract all business logic to corresponding MobX stores
 
 ### Testing Guidelines
-- **Jest + React Native Testing Library**: All tests use Jest with React Native Testing Library
+
+#### Setup and Tools
+- **Framework**: Jest + React Native Testing Library
 - **Test Location**: Tests go in `__tests__/` directory, mirroring the source structure
 - **Test Files**: Use `.test.ts` or `.test.tsx` extensions
-- **Component Testing**: Focus on user interactions and behavior, not implementation details
-- **Store Testing**: Test MobX stores in isolation with comprehensive scenarios
+- **Testing Utilities**: Use `render`, `screen`, `fireEvent`, and `act` from React Native Testing Library
 - **Mocking**: Mock external dependencies (React Native modules, Expo modules)
 - **Coverage**: Aim for good coverage of critical paths and edge cases
-- **Testing Utilities**: Use `render`, `screen`, `fireEvent`, and `act` from React Native Testing Library
-- **Current Status**: Testing infrastructure is fully configured, but compatibility issues with Expo SDK 54 and jest-expo prevent tests from running currently. See `TESTING.md` for detailed status.
+
+#### Testing Strategy by Priority
+1. **MobX Stores** (Highest Priority)
+   - Unit tests for all stores in `stores/` folder
+   - Test in isolation with comprehensive scenarios
+   - Mock external dependencies
+   - Focus on state changes, computed values, and actions
+   - Test edge cases and error handling
+
+2. **Reusable Components** (`components/` folder)
+   - Unit tests focusing on user interactions and behavior
+   - Test props, user events, and visual states
+   - Avoid testing implementation details
+   - Test accessibility features and responsive behavior
+   - Mock any store dependencies
+
+3. **Custom Hooks** (`theme/hooks.tsx`, etc.)
+   - Unit tests for hook logic and state management
+   - Use `@testing-library/react-hooks` or render hook in test component
+   - Test state changes, side effects, and return values
+   - Test hook cleanup and memory leaks
+
+4. **App Routes/Screens** (`app/` folder)
+   - Integration tests that test full user workflows
+   - Test navigation between screens and route parameters
+   - Test how screens interact with stores and external services
+   - Mock navigation and external dependencies
+   - Test critical user journeys end-to-end
+   - Focus on business logic flows rather than UI details
+
+#### Testing Best Practices
+- **Test Structure**: Follow AAA pattern (Arrange, Act, Assert)
+- **Test Naming**: Use descriptive names that explain the scenario being tested
+- **Test Isolation**: Each test should be independent and not rely on others
+- **Mock Strategy**: Mock external services but keep component-store interactions intact
+- **Snapshot Testing**: Use sparingly for stable UI components, prefer behavioral tests
+- **Performance**: Test performance-critical paths and memory usage in stores
 
 ### File Organization
 - App screens go in `app/` directory following Expo Router conventions
