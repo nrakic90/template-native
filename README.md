@@ -62,18 +62,36 @@ theme/               # Design system
 ├── colors.ts        # Color tokens
 ├── typography.ts    # Typography tokens
 └── ...              # Other design tokens
-*.store.ts           # MobX stores
+stores/              # MobX stores
+├── App.store.ts     # Global application store
+└── *.store.ts       # Feature-specific stores
 components/          # Reusable components
+__tests__/           # Test files
+├── app/             # App screen tests
+├── components/      # Component tests
+├── stores/          # Store tests
+└── theme/           # Theme tests
 ```
 
 ## Development
 
 ### Available Scripts
+
+**Development**
 - `npm start` - Start development server
 - `npm run android` - Run on Android
 - `npm run ios` - Run on iOS
 - `npm run web` - Run on web
 - `npm run lint` - Run ESLint
+- `npm run typecheck` - Run TypeScript type checking
+
+**Testing**
+- `npm run test:watch` - Run tests in watch mode
+- `npm run test:ci` - Run tests with coverage (CI mode)
+- `npm run test:coverage` - Generate coverage report
+- `npm run test:update` - Update test snapshots
+
+**Project Management**
 - `npm run reset-project` - Reset to blank project
 
 ### Creating Components
@@ -91,6 +109,28 @@ export default function MyComponent() {
   // Use theme in component
 }
 ```
+
+### Testing
+
+The project includes comprehensive testing setup with Jest and React Native Testing Library.
+
+⚠️ **Current Status**: There are compatibility issues between Expo SDK 54 and jest-expo. All testing infrastructure is configured and ready - tests will work once compatibility is resolved.
+
+**What's Ready**
+- ✅ Jest and React Native Testing Library configured
+- ✅ Example tests for components, stores, and themes
+- ✅ TypeScript support and coverage reporting
+- ✅ Proper mocking and setup files
+
+**Test Structure**
+- Tests in `__tests__/` directory mirroring source structure
+- Example tests showing best practices for:
+  - Component testing with user interactions
+  - MobX store testing in isolation  
+  - Theme provider and context testing
+  - Integration testing of app screens
+
+See `TESTING.md` for detailed testing documentation and examples.
 
 ## Configuration
 

@@ -15,6 +15,14 @@ This is a React Native Expo application using TypeScript, NativeWind (Tailwind C
 - `npm run ios` - Run on iOS simulator  
 - `npm run web` - Run in web browser
 - `npm run lint` - Run ESLint
+- `npm run typecheck` - Run TypeScript type checking
+
+### Testing
+- `npm test` - Run tests in watch mode
+- `npm run test:ci` - Run tests once with coverage (for CI)
+- `npm run test:coverage` - Run tests with coverage report
+- `npm run test:watch` - Run tests in watch mode (same as `npm test`)
+- `npm run test:update` - Update test snapshots
 
 ### Project Management
 - `npm run reset-project` - Move starter code to app-example/ and create blank app/ directory
@@ -74,12 +82,24 @@ Comprehensive design token system located in `theme/` directory:
 - **Component Focus**: Components should focus solely on UI presentation
 - **Logic Extraction**: Extract all business logic to corresponding MobX stores
 
+### Testing Guidelines
+- **Jest + React Native Testing Library**: All tests use Jest with React Native Testing Library
+- **Test Location**: Tests go in `__tests__/` directory, mirroring the source structure
+- **Test Files**: Use `.test.ts` or `.test.tsx` extensions
+- **Component Testing**: Focus on user interactions and behavior, not implementation details
+- **Store Testing**: Test MobX stores in isolation with comprehensive scenarios
+- **Mocking**: Mock external dependencies (React Native modules, Expo modules)
+- **Coverage**: Aim for good coverage of critical paths and edge cases
+- **Testing Utilities**: Use `render`, `screen`, `fireEvent`, and `act` from React Native Testing Library
+- **Current Status**: Testing infrastructure is fully configured, but compatibility issues with Expo SDK 54 and jest-expo prevent tests from running currently. See `TESTING.md` for detailed status.
+
 ### File Organization
 - App screens go in `app/` directory following Expo Router conventions
 - Reusable components go in `components/` directory in the root
 - Store files go in `stores/` directory in the root with `.store.ts` extension
 - Theme-related code stays in `theme/` directory
 - Global styles and imports handled at app/index.tsx level
+- Tests go in `__tests__/` directory with structure mirroring source files
 
 ### TypeScript
 - Strict TypeScript configuration enabled

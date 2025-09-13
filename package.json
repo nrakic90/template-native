@@ -8,7 +8,28 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "lint": "expo lint"
+    "test:ci": "jest --ci --coverage --watchAll=false",
+    "test:coverage": "jest --coverage --watchAll=false",
+    "test:watchAll": "jest --watchAll",
+    "test:watch": "jest --watch",
+    "test:update": "jest --updateSnapshot",
+    "lint": "expo lint",
+    "typecheck": "tsc --noEmit"
+  },
+  "jest": {
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@sentry/react-native|native-base|react-native-svg)"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{ts,tsx,js,jsx}",
+      "!**/coverage/**",
+      "!**/node_modules/**",
+      "!**/babel.config.js",
+      "!**/expo-env.d.ts",
+      "!**/.expo/**"
+    ]
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.2",
@@ -31,7 +52,7 @@
     "mobx-react-lite": "^4.1.0",
     "nativewind": "^4.2.0",
     "prettier-plugin-tailwindcss": "^0.5.14",
-    "react": "19.1.0",
+    "react": "^19.1.1",
     "react-dom": "19.1.0",
     "react-native": "0.81.4",
     "react-native-gesture-handler": "~2.28.0",
@@ -43,6 +64,8 @@
     "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
+    "@testing-library/react-native": "^12.9.0",
+    "@types/jest": "^30.0.0",
     "@types/react": "~19.1.0",
     "@typescript-eslint/eslint-plugin": "^8.43.0",
     "@typescript-eslint/parser": "^8.43.0",
@@ -52,6 +75,8 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-native": "^5.0.0",
+    "jest": "~29.7.0",
+    "jest-expo": "~54.0.11",
     "typescript": "~5.9.2"
   },
   "private": true
